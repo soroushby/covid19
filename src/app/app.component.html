@@ -1,30 +1,63 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+  <mat-sidenav mode="side" class="sidenav" #sidenav>
+    <mat-nav-list
+      role="list"
+      fxLayoutAlign="center center"
+      fxLayout="column"
+      fxLayoutGap="2rem"
+      fxLayoutAlign="center end"
+    >
+      <mat-list-item
+        role="listitem"
+        fxLayoutAlign="center center"
+        routerLink="/home"
+        (click)="sidenav.close()"
+        class="matlist"
+        >HOME
+      </mat-list-item>
+      <mat-list-item
+        role="listitem"
+        fxLayoutAlign="center center"
+        routerLink="/covid19"
+        (click)="sidenav.close()"
+        class="matlist"
+        >Covid19
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
         mat-icon-button
         class="example-icon"
         aria-label="Example icon-button with menu icon"
+        (click)="sidenav.toggle()"
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <span>My App</span>
-      <span class="example-spacer"></span>
-      <button
-        mat-icon-button
-        class="example-icon favorite-icon"
-        aria-label="Example icon-button with heart icon"
-      >
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with share icon"
-      >
-        <mat-icon>share</mat-icon>
-      </button>
+
+      <div class="nav" fxHide.lt-md fxFlex>
+        <ul class="nav-list" fxLayout="row" fxLayoutGap="3rem">
+          <li class="nav-list__item">
+            <a
+              routerLink="/home"
+              routerLinkActive="active"
+              fxLayoutAlign="center center"
+              >HOME<mat-icon class="nav-list__item-icon">home</mat-icon></a
+            >
+          </li>
+          <li class="nav-list__item">
+            <a
+              routerLink="/covid19"
+              routerLinkActive="active"
+              fxLayoutAlign="center center"
+              >Covid19<mat-icon class="nav-list__item-icon"
+                >video_library</mat-icon
+              ></a
+            >
+          </li>
+        </ul>
+      </div>
     </mat-toolbar>
 
     <router-outlet></router-outlet>

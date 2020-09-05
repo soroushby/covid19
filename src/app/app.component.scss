@@ -3,3 +3,42 @@ mat-sidenav,
 mat-sidenav-content {
   height: 100%;
 }
+
+.nav {
+  &-list {
+    &__item {
+      list-style: none;
+      font-size: 2rem;
+      //list-style: none;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: rgba(34, 230, 34, 0.89);
+      }
+      &-icon {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+
+.sidenav {
+  width: 20rem;
+  background: rgba(0, 0, 0, 0.815);
+}
+
+.active {
+  border-bottom: 1px white solid;
+}
+
+.matlist {
+  color: white !important;
+}
+
+.matlist:hover {
+  color: rgba(34, 230, 34, 0.89);
+}
