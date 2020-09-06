@@ -1,1 +1,11 @@
-<p>covid19 works!</p>
+<div class="main" *ngIf="covidData$ | async as covidData">
+  <div *ngFor="let covid of covidData">
+    <div>{{ covid.name }}</div>
+    <div>{{ covid.latest_data.deaths }}</div>
+    <div>{{ covid.latest_data.recovered }}</div>
+  </div>
+  <div></div>
+</div>
+
+<!-- {{ covidData$ | json }} -->
+<!-- {{ covidData.data }} -->
