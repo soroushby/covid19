@@ -1,3 +1,12 @@
 #scatter {
   font-size: 2rem;
 }
+
+.main {
+  background-color: yellow;
+  background-repeat: no-repeat;
+  //background-position: center;
+  background-size: cover;
+  //background-image: linear-gradient(orange, purple);
+  min-height: 100vh;
+}
