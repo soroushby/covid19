@@ -1,6 +1,8 @@
 import { CovidData } from './../../interfaces/covid-data';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { Observable } from 'rxjs';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-app-area-chart',
@@ -8,58 +10,68 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./app-area-chart.component.scss'],
 })
 export class AppAreaChartComponent implements OnInit {
-  covidData: CovidData[] = [];
-  cvd = [];
-
-  public options: any;
-
-  data = [
-    {
-      quarter: 'Q1',
-      spending: 450,
-    },
-    {
-      quarter: 'Q2',
-      spending: 560,
-    },
-    {
-      quarter: 'Q3',
-      spending: 600,
-    },
-    {
-      quarter: 'Q4',
-      spending: 700,
-    },
+  covidData$: Observable<CovidData[]> = this.ds.getCovidData();
+  private data = [
+    { Framework: 'Vue', Stars: '166443', Released: '2014' },
+    { Framework: 'React', Stars: '150793', Released: '2013' },
+    { Framework: 'Angular', Stars: '62342', Released: '2016' },
+    { Framework: 'Backbone', Stars: '27647', Released: '2010' },
+    { Framework: 'Ember', Stars: '21471', Released: '2011' },
   ];
-  constructor(private ds: DataService) {
-    this.options = {
-      data: this.data,
-      series: [
-        {
-          xKey: 'quarter',
-          yKey: 'spending',
-        },
-      ],
-    };
+  private svg;
+  private margin = 50;
+  private width = 750 - this.margin * 2;
+  private height = 400 - this.margin * 2;
+
+  private createSvg(): void {
+    this.svg = d3
+      .select('figure#scatter')
+      .append('svg')
+      .attr('width', this.width + this.margin * 2)
+      .attr('height', this.height + this.margin * 2)
+      .append('g')
+      .attr('transform', 'translate(' + this.margin + ',' + this.margin + ')');
   }
 
-  ngOnInit(): void {
-    this.ds.getCovidData().subscribe((x) =>
-      x.forEach((el) => {
-        return this.covidData.push(el);
-      })
-    );
+  private drawPlot(): void {
+    // Add X axis
+    const x = d3.scaleLinear().domain([2009, 2017]).range([0, this.width]);
+    this.svg
+      .append('g')
+      .attr('transform', 'translate(0,' + this.height + ')')
+      .call(d3.axisBottom(x).tickFormat(d3.format('d')));
 
-    // for (let i = 0; i < 250; i++) {
-    //   console.log(this.covidData[0]);
-    // }
+    // Add Y axis
+    const y = d3.scaleLinear().domain([0, 200000]).range([this.height, 0]);
+    this.svg.append('g').call(d3.axisLeft(y));
 
-    console.log(this.covidData);
+    // Add dots
+    const dots = this.svg.append('g');
+    dots
+      .selectAll('dot')
+      .data(this.data)
+      .enter()
+      .append('circle')
+      .attr('cx', (d) => x(d.Released))
+      .attr('cy', (d) => y(d.Stars))
+      .attr('r', 7)
+      .style('opacity', 0.5)
+      .style('fill', '#69b3a2');
+
+    // Add labels
+    dots
+      .selectAll('text')
+      .data(this.data)
+      .enter()
+      .append('text')
+      .text((d) => d.Framework)
+      .attr('x', (d) => x(d.Released))
+      .attr('y', (d) => y(d.Stars));
+  }
+
+  constructor(private ds: DataService) {}
+  ngOnInit() {
+    this.createSvg();
+    this.drawPlot();
   }
 }
-
-// result.forEach(element => {
-//   if (element._id === form.package) {
-//       selectedPackage = element;
-//   }
-// });
