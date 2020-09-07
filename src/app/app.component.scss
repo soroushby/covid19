@@ -17,7 +17,7 @@ mat-sidenav-content {
       }
 
       a:hover {
-        color: rgba(34, 230, 34, 0.89);
+        color: purple;
       }
       &-icon {
         margin-left: 0.5rem;
@@ -28,7 +28,7 @@ mat-sidenav-content {
 
 .sidenav {
   width: 20rem;
-  background: rgba(0, 0, 0, 0.815);
+  background: linear-gradient(rgba(255, 166, 0, 0.7), rgba(128, 0, 128, 0.7));
 }
 
 .active {
@@ -39,6 +39,22 @@ mat-sidenav-content {
   color: white !important;
 }
 
-.matlist:hover {
-  color: rgba(34, 230, 34, 0.89);
+.res {
+  position: absolute;
+  background-color: transparent;
+  z-index: 20;
+}
+
+.example-icon {
+  color: white;
+}
+
+.example-form {
+  min-width: 10rem;
+  max-width: 30rem;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
 }

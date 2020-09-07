@@ -1,14 +1,15 @@
 .main {
-  background-image: linear-gradient(rgb(85, 84, 82), purple);
+  background-image: linear-gradient(orange, red, purple);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
   font-size: 2rem;
+  //z-index: 2;
 }
 
 .main2 {
   &-card {
-    margin-top: 2rem;
+    margin-top: 8rem;
     width: 50rem;
     min-height: 40rem;
 

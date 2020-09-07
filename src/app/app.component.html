@@ -1,5 +1,5 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" class="sidenav" #sidenav>
+  <mat-sidenav class="sidenav" #sidenav>
     <mat-nav-list
       role="list"
       fxLayoutAlign="center center"
@@ -13,7 +13,7 @@
         routerLink="/home"
         (click)="sidenav.close()"
         class="matlist"
-        >HOME
+        >home
       </mat-list-item>
       <mat-list-item
         role="listitem"
@@ -21,29 +21,43 @@
         routerLink="/covid19"
         (click)="sidenav.close()"
         class="matlist"
-        >Covid19
+        >statistics
+      </mat-list-item>
+      <mat-list-item
+        role="listitem"
+        fxLayoutAlign="center center"
+        routerLink="/covid19/app-area-chart"
+        (click)="sidenav.close()"
+        class="matlist"
+        >chart
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="res">
       <button
         mat-icon-button
         class="example-icon"
         aria-label="Example icon-button with menu icon"
+        fxLayoutAlign="center center"
         (click)="sidenav.toggle()"
       >
         <mat-icon>menu</mat-icon>
       </button>
 
       <div class="nav" fxHide.lt-md fxFlex>
-        <ul class="nav-list" fxLayout="row" fxLayoutGap="3rem">
+        <ul
+          class="nav-list"
+          fxLayout="row"
+          fxLayoutGap="3rem"
+          fxLayoutAlign="start center"
+        >
           <li class="nav-list__item">
             <a
               routerLink="/home"
               routerLinkActive="active"
               fxLayoutAlign="center center"
-              >HOME<mat-icon class="nav-list__item-icon">home</mat-icon></a
+              >home<mat-icon class="nav-list__item-icon">home</mat-icon></a
             >
           </li>
           <li class="nav-list__item">
@@ -51,8 +65,8 @@
               routerLink="/covid19"
               routerLinkActive="active"
               fxLayoutAlign="center center"
-              >Covid19<mat-icon class="nav-list__item-icon"
-                >video_library</mat-icon
+              >statistics<mat-icon class="nav-list__item-icon"
+                >masks</mat-icon
               ></a
             >
           </li>
@@ -61,9 +75,17 @@
               routerLink="/covid19/app-area-chart"
               routerLinkActive="active"
               fxLayoutAlign="center center"
-              >charts<mat-icon class="nav-list__item-icon">face</mat-icon></a
+              >chart<mat-icon class="nav-list__item-icon"
+                >show_chart</mat-icon
+              ></a
             >
           </li>
+          <form fxFlexAlign="end" class="example-form">
+            <!-- <mat-form-field fxFlexAlign="end" class="example-full-width">
+              <mat-label>Search Country</mat-label>
+              <input matInput placeholder="Ex. Pizza" value="Vancouver" />
+            </mat-form-field> -->
+          </form>
         </ul>
       </div>
     </mat-toolbar>
