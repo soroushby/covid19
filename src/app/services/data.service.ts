@@ -12,7 +12,8 @@ export class DataService {
 
   getCovidData(): Observable<CovidData[]> {
     return this.http
-      .get(' https://corona-api.com/countries')
-      .pipe(map((ref) => Object.values(ref['data'])));
+      .get('https://corona-api.com/countries')
+      .pipe(map((covid: any) => covid.data));
+    // .pipe(map((ref) => Object.values(ref['data'])));
   }
 }

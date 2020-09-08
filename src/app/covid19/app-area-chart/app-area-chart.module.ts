@@ -6,9 +6,10 @@ import { AppAreaChartComponent } from './app-area-chart.component';
 import { AgChartsAngularModule } from 'ag-charts-angular';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CovidChartComponent } from '../covid-chart/covid-chart.component';
 
 @NgModule({
-  declarations: [AppAreaChartComponent],
+  declarations: [AppAreaChartComponent, CovidChartComponent],
   imports: [
     CommonModule,
     AppAreaChartRoutingModule,

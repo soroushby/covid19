@@ -1,5 +1,5 @@
 import { DataService } from './../services/data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,13 +8,9 @@ import { map } from 'rxjs/operators';
   templateUrl: './covid19.component.html',
   styleUrls: ['./covid19.component.scss'],
 })
-export class Covid19Component implements OnInit {
-  covidData$: Observable<any>;
-  constructor(private dataService: DataService) {}
-
-  ngOnInit(): void {
-    this.covidData$ = this.dataService.getCovidData();
-  }
+export class Covid19Component {
+  covidData$ = this.ds.getCovidData();
+  constructor(private ds: DataService) {}
 }
 
 // .subscribe((data) => console.log(data.data ));

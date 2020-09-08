@@ -12,7 +12,7 @@ export interface CovidData {
     confirmed: number; // Int or null
   };
   latest_data: {
-    death: number; // Int or null
+    deaths: number; // Int or null
     confirmed: number; // Int or null
     recovered: number; // Int or null
     critical: number; // Int or null
