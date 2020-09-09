@@ -9,50 +9,69 @@
 
 <!-- {{ covidData$ | json }} -->
 <!-- {{ covidData.data }} -->
-<div
-  class="main"
-  fxLayoutAlign="center center"
-  *ngIf="covidData$ | async as covidData"
-  fxLayout="row wrap"
-  fxLayoutGap="5rem"
->
-  <mat-card
-    *ngFor="let covid of covidData"
-    class="main2-card"
-    ngClass.lt-md="main2-card__res"
-    fxLayoutAlign="start center"
-    fxLayout="column"
-    fxLayoutGap="2rem"
-  >
-    <mat-card-header fxLayoutAlign="center center" fxLayout="column">
-      <mat-card-title
-        ><h1>{{ covid.name }}</h1></mat-card-title
-      >
-      <div>
-        <span>
-          <h3>Population: &nbsp;</h3>
-          {{ covid.population }}
-        </span>
-      </div>
-      <div>
-        <span>
-          <h3>Today deaths: &nbsp;</h3>
-          {{ covid.today.deaths }}
-        </span>
-      </div>
-      <div>
-        <span>
-          <h3>Updated at: &nbsp;</h3>
-          {{ covid.updated_at | date }}
-        </span>
-      </div>
-    </mat-card-header>
 
-    <mat-card-content
-      class="main2-card__content"
-      fxLayout="column"
-      fxLayoutGap="1rem"
+<div class="main" fxLayout="column">
+  <form fxFlex="100%" fxLayoutAlign="center start">
+    <mat-form-field
+      fxFlexAlign="center"
+      class="search"
+      fxLayoutAlign="center center"
     >
-    </mat-card-content>
-  </mat-card>
+      <input
+        fxLayoutAlign="center center"
+        matInput
+        type="text"
+        name="search"
+        [(ngModel)]="searchText"
+        autocomplete="off"
+        placeholder="  Search here"
+      />
+    </mat-form-field>
+  </form>
+  <div
+    fxLayoutAlign="center center"
+    *ngIf="covidData$ | async as covidData"
+    fxLayout="row wrap"
+    fxLayoutGap="5rem"
+  >
+    <mat-card
+      *ngFor="let covid of covidData | filter: searchText"
+      class="main2-card"
+      ngClass.lt-md="main2-card__res"
+      fxLayoutAlign="start center"
+      fxLayout="column"
+      fxLayoutGap="2rem"
+    >
+      <mat-card-header fxLayoutAlign="center center" fxLayout="column">
+        <mat-card-title
+          ><h1>{{ covid.name }}</h1></mat-card-title
+        >
+        <div>
+          <span>
+            <h3>Population: &nbsp;</h3>
+            {{ covid.population }}
+          </span>
+        </div>
+        <div>
+          <span>
+            <h3>Today deaths: &nbsp;</h3>
+            {{ covid.today.deaths }}
+          </span>
+        </div>
+        <div>
+          <span>
+            <h3>Updated at: &nbsp;</h3>
+            {{ covid.updated_at | date }}
+          </span>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content
+        class="main2-card__content"
+        fxLayout="column"
+        fxLayoutGap="1rem"
+      >
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

@@ -12,8 +12,8 @@ export class CovidChartComponent implements OnChanges {
 
   private svg;
   private margin = 50;
-  private width = 750 - this.margin * 2;
-  private height = 400 - this.margin * 2;
+  private width = 950 - this.margin * 2;
+  private height = 600 - this.margin * 2;
 
   constructor() {}
 
@@ -24,7 +24,6 @@ export class CovidChartComponent implements OnChanges {
           case 'covidData':
             this.createSvg();
             this.drawPlot();
-
             break;
         }
       }
@@ -81,7 +80,7 @@ export class CovidChartComponent implements OnChanges {
       .data(this.covidData)
       .enter()
       .append('text')
-      .text((d) => d.Framework)
+      .text((d) => d.name)
       .attr('x', (d, i) => x(i))
       .attr('y', (d) => y(d.latest_data.confirmed));
   }

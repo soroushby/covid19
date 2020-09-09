@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./covid19.component.scss'],
 })
 export class Covid19Component {
+  searchText;
   covidData$ = this.ds.getCovidData();
   constructor(private ds: DataService) {}
 }
