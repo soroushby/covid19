@@ -8,8 +8,10 @@ import { Observable } from 'rxjs';
   templateUrl: './app-area-chart.component.html',
   styleUrls: ['./app-area-chart.component.scss'],
 })
-export class AppAreaChartComponent {
+export class AppAreaChartComponent implements OnInit {
   covidData$ = this.ds.getCovidData();
 
   constructor(private ds: DataService) {}
+
+  ngOnInit() {}
 }

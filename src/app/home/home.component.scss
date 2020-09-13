@@ -1,8 +1,20 @@
 .main {
-  background-image: url(../../assets/StockSnap_UXKGGVITKM.jpg);
+  background-image: url(../../assets/bilal-o-A6_3spmvln0-unsplash.jpg);
   background-repeat: no-repeat;
   //background-position: center;
   background-size: cover;
   //background-image: linear-gradient(orange, purple);
   min-height: 100vh;
+}
+
+.card {
+  width: 100%;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+p {
+  color: white;
+  font-size: 6rem;
 }

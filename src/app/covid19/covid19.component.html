@@ -10,8 +10,8 @@
 <!-- {{ covidData$ | json }} -->
 <!-- {{ covidData.data }} -->
 
-<div class="main" fxLayout="column">
-  <form fxFlex="100%" fxLayoutAlign="center start">
+<!-- <div class="main" fxLayout="column">
+  <form fxFlex="100%" fxLayoutAlign="center center">
     <mat-form-field
       fxFlexAlign="center"
       class="search"
@@ -24,7 +24,7 @@
         name="search"
         [(ngModel)]="searchText"
         autocomplete="off"
-        placeholder="  Search here"
+        placeholder="  Search Country"
       />
     </mat-form-field>
   </form>
@@ -74,4 +74,8 @@
       </mat-card-content>
     </mat-card>
   </div>
+</div> -->
+
+<div class="main" fxLayoutAlign="center center">
+  <div id="mainChart"></div>
 </div>
