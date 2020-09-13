@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: 'app-area-chart',
     loadChildren: () =>
-      import('./app-area-chart/app-area-chart.module').then(
+      import('../app-area-chart/app-area-chart.module').then(
         (m) => m.AppAreaChartModule
       ),
   },

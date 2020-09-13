@@ -5,7 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'covid19', loadChildren: () => import('./covid19/covid19.module').then(m => m.Covid19Module) },
+  {
+    path: 'covid19',
+    loadChildren: () =>
+      import('./covid19/app-covid19/covid19.module').then(
+        (m) => m.Covid19Module
+      ),
+  },
 ];
 
 @NgModule({

@@ -15,14 +15,14 @@ export class CovidChartComponent implements OnChanges {
   private width = 950 - this.margin * 2;
   private height = 600 - this.margin * 2;
 
-  constructor() {}
-
   ngOnChanges(changes: SimpleChanges): void {
     for (const propName in changes) {
       if (changes.hasOwnProperty(propName)) {
         switch (propName) {
           case 'covidData':
-            this.createSvg();
+            if (!this.svg) {
+              this.createSvg();
+            }
             this.drawPlot();
             break;
         }
